@@ -103,4 +103,5 @@ elif step == 12:
             file_name="jawaban_anniversary.txt",
             mime="text/plain",
         )
-        st.caption("Jangan lupa klik download sebelum ditutup :) (buat save doang)")
+        st.caption("Jangan lupa klik download sebelum ditutup :)")
+        st.caption("(buat save doang)")
