@@ -57,13 +57,33 @@ step = st.session_state.step
 st.progress((step + 1) / total_step)
 
 if step == 0:
-    questions(0, "q1", "Pertanyaan 1")
+    questions(0, "q1", "Di mana lokasi bapak ibu pertama kali nge-date?")
 elif step == 1:
-    challenge(1, "c1", "Challenge 1")
+    questions(1, "q2", "Siapa yang paling banyak usaha pas masa PDKT, dan apa jurus utamanya?")
 elif step == 2:
+    questions(2, "q3", "Apa barang pertama yang pernah diberikan masing-masing waktu masih pacaran?")
+elif step == 3:
+    challenge(3, "c1", "Ceritakan kembali momen paling konyol atau bikin malu pas masa-masa awal pacaran/pernikahan")
+elif step == 4:
+    questions(4, "q4", "Lagu apa yang paling identik dengan masa pacaran bapak ibu?")
+elif step == 5:
+    questions(5, "q5", "Apa yang pertama kali bikin bapak ibu tertarik satu sama lain?")
+elif step == 6:
+    questions(6, "q6", "Apa yang paling diingat dari hari pernikahan bapak ibu?")
+elif step == 7:
+    challenge(7, "c2", "Pelukan erat-erat selama 15 detik tanpa boleh lepas")
+elif step == 8:
+    questions(8, "q7", "Makanan apa yang selalu mengingatkan pada kenangan tertentu?")
+elif step == 9:
+    questions(9, "q8", "Tempat mana yang paling ingin dikunjungi lagi bersama, kenapa?")
+elif step == 10:
+    challenge(10, "c3", "Bisikkan 3 hal kecil dari pasangan yang paling disyukuri selama puluhan tahun hidup bareng")
+elif step == 11:
+    questions(11, "q9", "Apa harapan untuk perjalanan ke depan bersama?")
+elif step == 12:
     st.balloons()
     st.markdown(
-        "<h3 style='text-align:center;'>Happy Anniversary, Bapak & Ibu! 💞</h3>",
+        "<h3 style='text-align:center;'>Happy Anniversary, Bapak Ibu! 💞</h3>",
         unsafe_allow_html=True,
     )
     if st.session_state.jeongdab:
@@ -83,4 +103,4 @@ elif step == 2:
             file_name="jawaban_anniversary.txt",
             mime="text/plain",
         )
-        st.caption("Jangan lupa klik download ditutup :))")
+        st.caption("Jangan lupa klik download sebelum ditutup :) (buat save doang)")
