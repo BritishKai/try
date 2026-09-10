@@ -1,10 +1,9 @@
 import streamlit as st
 from datetime import datetime, date
-import streamlit.components.v1 as components
+from streamlit_autorefresh import st_autorefresh
 
 wedding_date = date(1999, 9, 11)
-now = datetime.now()
-quiz_open = datetime(2026, 9, 10, 11, 52)
+quiz_open = datetime(2026, 9, 12, 20, 0)
 
 st.set_page_config(
     page_title="𑣲⋆ 27th Anniversary",
@@ -72,36 +71,22 @@ def popup():
     if st.button("Go to the next page", disabled=not checked):
         st.switch_page("pages/1_quiz.py")
 
+now = datetime.now()
+
 if now < quiz_open:
+    st_autorefresh(interval=1000, key="countdown_tick")  # rerun tiap 1 detik
+
+    sisa = quiz_open - now
+    hari = sisa.days
+    jam, sisa_detik = divmod(sisa.seconds, 3600)
+    menit, detik = divmod(sisa_detik, 60)
+
     st.markdown("<h4 style='text-align:center;'>The next page will be opened in:</h4>", unsafe_allow_html=True)
-    target_iso = quiz_open.isoformat()
-    countdown_html = f"""
-    <div style="text-align:center; font-size:1.8rem; font-weight:bold; color:#ff4d6d; font-family:sans-serif;">
-      <span id="countdown">Counting...</span>
-    </div>
-    <script>
-    const target = new Date("{target_iso}").getTime();
-    function updateCountdown() {{
-        const now = new Date().getTime();
-        const distance = target - now;
-        if (distance <= 0) {{
-            document.getElementById("countdown").innerHTML = "Waktunya sudah tiba! 🎉";
-            clearInterval(timer);
-            setTimeout(function() {{ window.parent.location.reload(); }}, 1200);
-            return;
-        }}
-        const hari = Math.floor(distance / (1000*60*60*24));
-        const jam = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-        const menit = Math.floor((distance % (1000*60*60)) / (1000*60));
-        const detik = Math.floor((distance % (1000*60)) / 1000);
-        document.getElementById("countdown").innerHTML =
-            hari + " days : " + jam + " hours : " + menit + " minutes : " + detik + " seconds";
-    }}
-    const timer = setInterval(updateCountdown, 1000);
-    updateCountdown();
-    </script>
-    """
-    components.html(countdown_html, height=70)
+    st.markdown(
+        f"<div style='text-align:center; font-size:1.8rem; font-weight:bold; color:#ff4d6d;'>"
+        f"{hari} days : {jam} hours : {menit} minutes : {detik} seconds</div>",
+        unsafe_allow_html=True,
+    )
     st.button("⋆｡°✩ The next page can't be opened yet ✩°｡⋆", disabled=True)
 else:
     if st.button("⋆｡°✩ You can now go to the next page ✩°｡⋆"):
