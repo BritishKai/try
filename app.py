@@ -5,12 +5,6 @@ from streamlit_autorefresh import st_autorefresh
 wedding_date = date(1999, 9, 11)
 quiz_open = datetime(2026, 9, 12, 13, 00)
 
-if datetime.now() < quiz_open:
-    st.warning("Check your time!")
-    if st.button("Back to main page"):
-        st.switch_page("app.py")
-    st.stop()
-
 st.set_page_config(
     page_title="𑣲⋆ 27th Anniversary",
     layout="centered"
