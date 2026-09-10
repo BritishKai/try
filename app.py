@@ -3,7 +3,7 @@ from datetime import datetime, date
 from streamlit_autorefresh import st_autorefresh
 
 wedding_date = date(1999, 9, 11)
-quiz_open = datetime(2026, 9, 10, 13, 27)
+quiz_open = datetime(2026, 9, 12, 13, 0)
 
 st.set_page_config(
     page_title="𑣲⋆ 27th Anniversary",
@@ -37,7 +37,7 @@ st.markdown(
 )
 
 st.markdown("<div class='big-title'>♡ Bapak & Ibu ♡</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>Happy 26th Anniversary</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>Happy 27th Anniversary</div>", unsafe_allow_html=True)
 st.write("")
 
 today = date.today()
@@ -59,7 +59,7 @@ col2.metric("Estimasi Makan Bareng", f"{total*3:,}")
 col3.metric("Estimasi Peluk", f"{total*2:,}")
 
 st.markdown("<div class='sub-title'>Message dari WG</div>", unsafe_allow_html=True)
-st.markdown("<div class='big-title'>Happy 26th Anniversary Bapak & Ibu 𑣲⋆</div>", unsafe_allow_html=True)
+st.markdown("<div class='big-title'>Happy 27th Anniversary Bapak & Ibu 𑣲⋆</div>", unsafe_allow_html=True)
 st.markdown("<div class='sub-title'>Widi Gegi bersyukur udah lahir dan terpilih buat jadi anaknya ibu sama bapak. Makasih ibu sama bapak udah rawat kita sampe sekarang. Kita berdoa terus supaya ibu sama bapak panjang umur, sehat selalu, bahagia selalu, dan bareng-bareng terus selama lama lama lamanya.</div>", unsafe_allow_html=True)
 
 @st.dialog("Before go to the next page...")
