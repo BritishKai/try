@@ -69,7 +69,7 @@ elif step == 2:
     if st.session_state.jeongdab:
         st.write("")
         st.subheader("Summary")
-        for question, jeongdab in st.session_state.jawaban:
+        for question, jeongdab in st.session_state.jeongdab:
             st.markdown(f"**{question}**")
             st.write(jeongdab)
             st.write("")
