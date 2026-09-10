@@ -3,7 +3,7 @@ from datetime import datetime, date
 from streamlit_autorefresh import st_autorefresh
 
 wedding_date = date(1999, 9, 11)
-quiz_open = datetime(2026, 9, 10, 13, 10)
+quiz_open = datetime(2026, 9, 10, 13, 22)
 
 st.set_page_config(
     page_title="𑣲⋆ 27th Anniversary",
@@ -38,6 +38,7 @@ st.markdown(
 
 st.markdown("<div class='big-title'>♡ Bapak & Ibu ♡</div>", unsafe_allow_html=True)
 st.markdown("<div class='sub-title'>Happy 26th Anniversary</div>", unsafe_allow_html=True)
+st.markdown("<div class='big-title'>Widi Gegi bersyukur udah lahir dan terpilih buat jadi anaknya ibu sama bapak. Makasih ibu sama bapak udah rawat kita sampe sekarang. Kita berdoa terus supaya ibu sama bapak panjang umur, sehat selalu, bahagia selalu, dan bareng-bareng terus selama lama lama lamanya.</div>", unsafe_allow_html=True)
 st.write("")
 
 today = date.today()
@@ -48,7 +49,7 @@ month = remaining // 30
 days = month % 30
 
 st.markdown(
-    f"<h3 style='text-align:center;'>It's been <span style='color:#EB7D00;'>{year} years, {month} months, {days} days</span> together 🎉</h3>",
+    f"<h3 style='text-align:center;'><span style='color:#EB7D00;'>{year} years together 🎉</h3>",
     unsafe_allow_html=True,
 )
 
