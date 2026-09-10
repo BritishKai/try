@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import date, datetime
 
-quiz_open = datetime(2026, 9, 10, 11, 48)
+quiz_open = datetime(2026, 9, 10, 12, 38)
 
 if datetime.now() < quiz_open:
     st.warning("Check your time!")
