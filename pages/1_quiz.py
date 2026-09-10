@@ -11,6 +11,8 @@ if datetime.now() < quiz_open:
 
 if "step" not in st.session_state:
     st.session_state.step = 0
+if "jeongdab" not in st.session_state:
+    st.session_state.jeongdab = []
 
 st.set_page_config(
     page_title="Quiz Time!",
@@ -33,17 +35,14 @@ st.markdown(
 
 total_step = 13
 
-def questions(this_step, key, question, options, answer):
+def questions(this_step, key, question):
     st.subheader("Pertanyaan")
-    jeongdab = st.radio(question, options, index=None, key=key)
-    if jeongdab is not None:
-        if jeongdab == answer:
-            st.success("Benar ༘⋆ヽ( ^ᴗ^)ノ⋆ˎˊ˗")
+    jeongdab = st.text_input(question, key=key)
+    if st.button("Next", key=f"next_{key}"):
+        if jeongdab.strip() == "":
+            st.warning("Answer!")
         else:
-            st.error(f"˙◠˙ harusnya {answer} ga sih")
-        if st.button("Next", key=f"next_{key}"):
-            st.session_state.step += 1
-            st.rerun()
+            st.session_state.jeongdab.append((question, jeongdab.strip()))
 
 def challenge(this_step, key, mission):
     st.subheader("Challenge")
@@ -56,12 +55,30 @@ step = st.session_state.step
 st.progress((step + 1) / total_step)
 
 if step == 0:
-    questions(0, "q1", "Pertanyaan 1", ["A", "B", "C", "D"], "A")
+    questions(0, "q1", "Pertanyaan 1")
 elif step == 1:
-    challenge(1, "c1", "Challenge")
+    challenge(1, "c1", "Challenge 1")
 elif step == 2:
     st.balloons()
     st.markdown(
         "<h3 style='text-align:center;'>Happy Anniversary, Bapak & Ibu! 💞</h3>",
         unsafe_allow_html=True,
     )
+    if st.session_state.jeongdab:
+        st.write("")
+        st.subheader("Summary")
+        for question, jeongdab in st.session_state.jawaban:
+            st.markdown(f"**{question}**")
+            st.write(jeongdab)
+            st.write("")
+
+        isi_txt = "\n\n".join(
+            f"{question}\n{jeongdab}" for question, jeongdab in st.session_state.jeongdab
+        )
+        st.download_button(
+            label="Download Jawaban (.txt)",
+            data=isi_txt,
+            file_name="jawaban_anniversary.txt",
+            mime="text/plain",
+        )
+        st.caption("Jangan lupa klik download ditutup :))")
