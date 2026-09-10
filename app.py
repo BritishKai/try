@@ -3,7 +3,7 @@ from datetime import datetime, date
 from streamlit_autorefresh import st_autorefresh
 
 wedding_date = date(1999, 9, 11)
-quiz_open = datetime(2026, 9, 10, 11, 44)
+quiz_open = datetime(2026, 9, 10, 11, 48)
 
 st.set_page_config(
     page_title="𑣲⋆ 27th Anniversary",
