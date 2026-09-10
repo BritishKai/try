@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import date, datetime
 
-quiz_open = datetime(2026, 9, 10, 11, 44)
+quiz_open = datetime(2026, 9, 10, 11, 48)
 
 if datetime.now() < quiz_open:
     st.warning("Check your time!")
@@ -43,6 +43,8 @@ def questions(this_step, key, question):
             st.warning("Answer!")
         else:
             st.session_state.jeongdab.append((question, jeongdab.strip()))
+            st.session_state.step += 1
+            st.rerun()
 
 def challenge(this_step, key, mission):
     st.subheader("Challenge")
