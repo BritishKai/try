@@ -1,4 +1,13 @@
 import streamlit as st
+from datetime import date, datetime
+
+quiz_open = datetime(2026, 9, 12, 13, 00)
+
+if datetime.now() < quiz_open:
+    st.warning("Check your time!")
+    if st.button("Back to main page"):
+        st.switch_page("app.py")
+    st.stop()
 
 if "step" not in st.session_state:
     st.session_state.step = 0
